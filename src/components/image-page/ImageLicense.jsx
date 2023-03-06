@@ -1,5 +1,5 @@
 import { Box, Center, Flex, Spacer } from "@chakra-ui/react"
-import { Checkbox, CheckboxGroup } from "@chakra-ui/react"
+import { Checkbox } from "@chakra-ui/react"
 
 const ImageLicense = ({ data }) => {
   return (
