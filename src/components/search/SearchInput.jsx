@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import {
   Button,
   Center,
@@ -7,12 +7,14 @@ import {
   InputGroup,
   InputRightElement,
   FormErrorMessage,
-  FormLabel,
 } from "@chakra-ui/react"
 import { useForm } from "react-hook-form"
 import { CloseIcon } from "@chakra-ui/icons"
+import { searchData } from "../../helper/search-data"
 
 const SearchInput = () => {
+  const [searchValue, setSearchValue] = useState()
+
   const CloseBtnClicked = () => {
     reset({ search: "" })
   }
@@ -27,9 +29,10 @@ const SearchInput = () => {
   function onSubmit(values) {
     return new Promise((resolve) => {
       setTimeout(() => {
-        alert(JSON.stringify(values, null, 2))
+        //alert(searchData(values))
+        setSearchValue(searchData(values))
         resolve()
-      }, 3000)
+      }, 0)
     })
   }
 
@@ -61,6 +64,7 @@ const SearchInput = () => {
           </FormErrorMessage>
         </FormControl>
       </form>
+      {JSON.stringify(searchValue)}
     </Center>
   )
 }
