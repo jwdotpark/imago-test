@@ -12,7 +12,7 @@ import { useForm } from "react-hook-form"
 import { CloseIcon } from "@chakra-ui/icons"
 import { searchData } from "../../helper/search-data"
 
-const SearchInput = ({ searchValue, setSearchValue }) => {
+const SearchInput = ({ setSearchValue }) => {
   const CloseBtnClicked = () => {
     reset({ search: "" })
   }
@@ -27,7 +27,6 @@ const SearchInput = ({ searchValue, setSearchValue }) => {
   function onSubmit(values) {
     return new Promise((resolve) => {
       setTimeout(() => {
-        //alert(searchData(values))
         setSearchValue(searchData(values))
         resolve()
       }, 0)

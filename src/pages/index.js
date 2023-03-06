@@ -1,6 +1,5 @@
 import { useState } from "react"
 import Head from "next/head"
-import Image from "next/image"
 import Layout from "../components/global/layout"
 import SearchBox from "../components/search/SearchBox"
 import SearchResult from "../components/search/SearchResult"
