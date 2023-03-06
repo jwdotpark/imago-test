@@ -12,9 +12,7 @@ import { useForm } from "react-hook-form"
 import { CloseIcon } from "@chakra-ui/icons"
 import { searchData } from "../../helper/search-data"
 
-const SearchInput = () => {
-  const [searchValue, setSearchValue] = useState()
-
+const SearchInput = ({ searchValue, setSearchValue }) => {
   const CloseBtnClicked = () => {
     reset({ search: "" })
   }
@@ -64,7 +62,6 @@ const SearchInput = () => {
           </FormErrorMessage>
         </FormControl>
       </form>
-      {JSON.stringify(searchValue)}
     </Center>
   )
 }

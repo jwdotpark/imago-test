@@ -1,9 +1,13 @@
+import { useState } from "react"
 import Head from "next/head"
 import Image from "next/image"
 import Layout from "../components/global/layout"
 import SearchBox from "../components/search/SearchBox"
+import SearchResult from "../components/search/SearchResult"
 
 export default function Home() {
+  const [searchValue, setSearchValue] = useState([])
+
   return (
     <>
       <Head>
@@ -13,7 +17,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <SearchBox />
+        <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
+        <SearchResult searchValue={searchValue} />
       </Layout>
     </>
   )
