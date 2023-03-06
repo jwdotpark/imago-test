@@ -7,11 +7,7 @@ const SearchResult = ({ searchValue }) => {
 
   return (
     <Box>
-      <Box
-        padding={4}
-        mx="auto"
-        sx={{ columnCount: [1, 2, 3], columnGap: "8px" }}
-      >
+      <Box padding={4} m="8" sx={{ columnCount: [1, 2, 3], columnGap: "8px" }}>
         {searchValue.map((item) => {
           return (
             <Image
