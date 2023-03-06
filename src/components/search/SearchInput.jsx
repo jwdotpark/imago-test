@@ -1,36 +1,67 @@
+import { useState, useEffect } from "react"
 import {
-  Box,
   Button,
   Center,
+  FormControl,
   Input,
   InputGroup,
   InputRightElement,
+  FormErrorMessage,
+  FormLabel,
 } from "@chakra-ui/react"
+import { useForm } from "react-hook-form"
 import { CloseIcon } from "@chakra-ui/icons"
 
 const SearchInput = () => {
   const CloseBtnClicked = () => {
-    console.log("Close button clicked")
+    reset({ search: "" })
   }
-  
+
+  const {
+    handleSubmit,
+    register,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm()
+
+  function onSubmit(values) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        alert(JSON.stringify(values, null, 2))
+        resolve()
+      }, 3000)
+    })
+  }
+
   return (
-    <Box bg="#F4F3F0" h="200" w="100%">
-      <Center h="200">
-        <InputGroup mx="8">
-          <Input
-            w="100%"
-            bg="white"
-            borderRadius="none"
-            placeholder="Search.."
-          />
-          <InputRightElement color="gray.300" fontSize="1.2em">
-            <Button size="xs" variant="ghost" onClick={CloseBtnClicked}>
-              <CloseIcon />
-            </Button>
-          </InputRightElement>
-        </InputGroup>
-      </Center>
-    </Box>
+    <Center h="100%" w="100%">
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <FormControl isInvalid={errors.search}>
+          <InputGroup w="80vw">
+            <Input
+              w="100%"
+              bg="#fff"
+              borderRadius="none"
+              disabled={isSubmitting}
+              id="search"
+              placeholder="Search.."
+              {...register("search", {
+                required: "This is required",
+                minLength: { value: 2, message: "Minimum length should be 2" },
+              })}
+            />
+            <InputRightElement color="gray.600" fontSize="1.2em">
+              <Button size="xs" variant="ghost" onClick={CloseBtnClicked}>
+                <CloseIcon />
+              </Button>
+            </InputRightElement>
+          </InputGroup>
+          <FormErrorMessage>
+            {errors.search && errors.search.message}
+          </FormErrorMessage>
+        </FormControl>
+      </form>
+    </Center>
   )
 }
 

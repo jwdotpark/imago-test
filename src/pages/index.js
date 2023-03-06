@@ -1,7 +1,7 @@
 import Head from "next/head"
 import Image from "next/image"
 import Layout from "../components/global/layout"
-import SearchInput from "../components/search/SearchInput"
+import SearchBox from "../components/search/SearchBox"
 
 export default function Home() {
   return (
@@ -13,7 +13,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <SearchInput />
+        <SearchBox />
       </Layout>
     </>
   )
